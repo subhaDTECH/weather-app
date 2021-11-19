@@ -1,0 +1,32 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.main_section{
+  background-color: rgb(80, 139, 187);
+  width: 100vw;
+  height: 100vh;
+}
+body{
+  background-color: rgb(80, 139, 187);
+}
+.weather-app{
+ width :70vw;
+ height:50vh;
+  background-color:#fff;
+  border-radius: 20px;
+}
+.center_div{
+  display: grid;
+  place-items: center;
+}
+/* @media (max-width:786){
+  .weather-app{
+    max-width: 400px;
+    max-height: 400px;
+    background-color:#fff;
+    border-radius: 20px;
+  }
+
+} */

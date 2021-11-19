@@ -1,0 +1,67 @@
+import React,{useState,useEffect} from 'react';
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "./index.css";
+const App=()=>{
+  const[city,setCity]=useState([]);
+  const [search,setSearch]=useState('kolkata');
+  useEffect(() => {
+
+    const fetchApi=async()=>{
+
+     const res=await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${search}&units=metric&appid=b4769bbe9a42ca0e8de1f56e70704218`);
+     const jsondata=await res.json();
+     
+     
+     
+     setCity(jsondata.main);
+     console.log('city',city);
+    
+      
+
+    }
+    fetchApi();
+  
+  },[search])
+
+
+  return (
+    <>
+    <div className="container-fluid  main_section">
+      <div className='row'>
+        <div className="col-md-10 mx-auto center_div mt-5">
+         <div className="weather-app d-flex justify-content-center align-items-center flex-column">
+           <div className="input_box mt-5 text-center d-inline d-flex justify-content-center align-items-center">
+           <input autoComplete="off" value={search} onChange={(event)=>{setSearch(event.target.value)}} className="form-control me-2 text-center" type="search" placeholder="Enter the city name" aria-label="Search"/>
+           <button className="btn btn-success mt-2 d-inline" type="submit">Search</button>
+
+            <div>
+           
+            </div>
+              
+
+           </div>
+           <div className="info_box">
+               <h3>{search}</h3>
+              <h5>Temp:{city?.temp} OC</h5>
+               <p>Max temp :{city?.temp_max}</p>
+               <p>Min temp :{city?.temp_min}</p>
+
+           </div>
+           
+
+
+         </div>
+
+          
+        </div>
+
+    </div>
+
+    </div>
+
+    </>
+  )
+}
+export default App;
+ 
+
